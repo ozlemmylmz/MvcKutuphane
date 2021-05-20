@@ -1,0 +1,65 @@
+﻿@using MvcKutuphane.Models.Entity;
+@model List<TBLHAREKET>
+@{
+    ViewBag.Title = "Kitaplarım";
+    Layout = "~/Views/Shared/_LayoutPanel.cshtml";
+}
+
+<h4>Kitap Listem</h4>
+
+<!DOCTYPE html>
+<html>
+<body class="hold-transition sidebar-mini">
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- /.col -->
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header p-2">
+                        </div><!-- /.card-header -->
+                        <div class="card-body">
+                            <div class="tab-pane" id="timeline">
+                                <!-- The timeline -->
+                                <div class="timeline timeline-inverse">
+                                    <!-- timeline time label -->
+                                    @foreach (var x in Model)
+                                    {
+                                        <div class="time-label">
+                                            <a class="btn btn-success">
+                                                <span class="bg-success">
+                                                    @(((DateTime)x.ALIŞTARIH).ToString("dd-MMM-yyyy"))
+                                                </span>
+                                            </a>
+                                            -----
+                                            <a class="btn btn-warning">
+                                                <span class="bg-warning">
+                                                    @(((DateTime)x.UYEGETIRTARIH).ToString("dd-MMM-yyyy"))
+                                                </span>
+                                            </a>
+                                        </div>
+                                        <!-- /.timeline-label -->
+                                        <!-- timeline item -->
+                                        <div>
+
+                                            <div class="timeline-item">
+                                                <div class="timeline-body">
+                                                    @x.TBLKITAP.AD -@x.TBLKITAP.TBLYAZAR.AD @x.TBLKITAP.TBLYAZAR.SOYAD
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+
+                            </div>
+                        </div>
+                    </div><!-- /.card-body -->
+                </div>
+                <!-- /.nav-tabs-custom -->
+            </div>
+            <!-- /.col -->
+        </div>
+    </section>
+</body>
+</html>
